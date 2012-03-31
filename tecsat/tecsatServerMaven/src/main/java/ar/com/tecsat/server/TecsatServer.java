@@ -14,6 +14,6 @@ public class TecsatServer{
 	public static void main(String[] args) {
 		
 	    System.out.println(ServerConstants.DateFormat.format(new Date()) + " Start: ");
-	    new ServidorUDP(4444);
+	    new ServerUDP(4444);
 	}
 }
