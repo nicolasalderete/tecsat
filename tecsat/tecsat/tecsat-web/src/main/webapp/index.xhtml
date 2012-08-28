@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<p:panel header="Inicio de sesion" id="panelLogin" styleClass="panelLog">
+			<h:form id="loginForm">
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Usuario" for="user" />
+					<h:inputText value="#{loginView.usuario}" label="Usuario" id="user"
+						requiredMessage="Campo requerido" required="true" />
+					<h:message for="user" errorStyle="color: red"
+						infoStyle="color: green" />
+
+					<h:outputLabel value="Contraseña" for="pass" />
+					<h:inputText value="#{loginView.contrasenia}"
+						requiredMessage="Campo requerido" label="Contraseña" id="pass"
+						required="true" />
+					<h:message for="pass" errorStyle="color: red"
+						infoStyle="color: green" />
+
+					<h:commandButton action="#{loginView.isOperador}" value="Login" />
+				</h:panelGrid>
+			</h:form>
+			</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
