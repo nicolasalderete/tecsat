@@ -11,19 +11,19 @@
 			<h:form id="loginForm">
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Usuario" for="user" />
-					<h:inputText value="#{loginView.usuario}" label="Usuario" id="user"
+					<h:inputText value="#{loginBean.usuario}" label="Usuario" id="usario"
 						requiredMessage="Campo obligatorio" required="true" />
 					<h:message for="user" errorStyle="color: red"
 						infoStyle="color: green" />
 
 					<h:outputLabel value="Contraseña" for="pass" />
-					<h:inputSecret value="#{loginView.contrasenia}"
-						requiredMessage="Campo obligatorio" label="Contraseña" id="pass"
+					<h:inputSecret value="#{loginBean.contrasenia}"
+						requiredMessage="Campo obligatorio" label="Contraseña" id="contrasenia"
 						required="true" />
 					<h:message for="pass" errorStyle="color: red"
 						infoStyle="color: green" />
 
-					<h:commandButton action="#{loginView.isOperador}" value="Login" />
+					<h:commandButton action="#{loginBean.isOperador}" value="Iniciar sesion" />
 				</h:panelGrid>
 			</h:form>
 			</p:panel>

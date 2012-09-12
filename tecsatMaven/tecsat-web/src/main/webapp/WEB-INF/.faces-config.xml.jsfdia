@@ -5,12 +5,12 @@
   <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
    PATH="/index.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="success:#{loginView.isOperador}:#user#home.xhtml" NAME="output"
+    ID="success:#{loginBean.isOperador}:#user#home.xhtml" NAME="output"
     PATH="/user/home.xhtml" TARGET="rules:#user#home.xhtml"
-    TITLE="#{loginView.isOperador}:success" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="failed:#{loginView.isOperador}:#index.xhtml"
+    TITLE="#{loginBean.isOperador}:success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failed:#{loginBean.isOperador}:#index.xhtml"
     NAME="output1" PATH="/index.xhtml" TARGET="rules:#index.xhtml"
-    TITLE="#{loginView.isOperador}:failed" model-entity="JSFProcessItemOutput"/>
+    TITLE="#{loginBean.isOperador}:failed" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#user#home.xhtml" PATH="/user/home.xhtml"

@@ -4,14 +4,20 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:menubar>
-		<p:menuitem value="Home" url="/user/home.xhtml"/>
-		<p:submenu label="Localizacion">
-			<p:menuitem value="Vehiculos" url="/user/vehiculo.xhtml"/>
-			<p:menuitem value="Flotas" url="/user/flota.xhtml"/>
+		<p:menuitem value="Home" url="/user/home.xhtml" icon="ui-icon-contact"/>
+		<p:submenu label="Localizacion"  icon="ui-icon-contact">
+			<p:submenu label="Vehiculos"  icon="ui-icon-contact">
+				<p:menuitem value="Actual" url="/user/vehiculo.xhtml" />
+				<p:menuitem value="Flotas" url="/user/flota.xhtml" />
+			</p:submenu>
+			<p:menuitem value="Flotas" url="/user/flota.xhtml" icon="ui-icon-contact"/>
 		</p:submenu>
-		<p:menuitem value="Reportes" url="/user/reportes.xhtml"/>
-		<p:menuitem value="Alertas" url="/user/alertas.xhtml"/>
-		<p:menuitem value="Administracion" url="/private/admin.xhtml"/>
+		<p:menuitem value="Reportes" url="/user/reportes.xhtml"  icon="ui-icon-contact"/>
+		<p:menuitem value="Alertas" url="/user/alertas.xhtml"  icon="ui-icon-contact"/>
+		<p:submenu label="Administracion" align="left"  icon="ui-icon-contact">
+			<p:menuitem value="Operadores" url="/private/admin.xhtml"  icon="ui-icon-contact"/>
+			<p:menuitem value="Vehiculos" url="/private/admin.xhtml"  icon="ui-icon-contact"/>
+		</p:submenu>
 	</p:menubar>
 
 </ui:composition>

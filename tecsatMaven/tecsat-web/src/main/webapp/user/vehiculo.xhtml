@@ -7,20 +7,31 @@
 	xmlns:m="http://code.google.com/p/gmaps4jsf/">
 
 <ui:composition template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="encabezado">
-		<ui:include src="/WEB-INF/templates/encabezado.xhtml" />
-	</ui:define>
-	<ui:define name="menu">
-		<ui:include src="/WEB-INF/templates/menu.xhtml" />
-	</ui:define>
 	<ui:define name="content">
+	<h:panelGrid columns="2">
+			<h:panelGroup>
+			<h:panelGrid columns="2">
+			<h:outputLabel value="Vehiculo: " />
+			<h:selectOneMenu value="#{vehiculoBean.vehiculoId}">
+				<f:selectItem noSelectionOption="true" itemValue="Seleccione..."/>
+				<f:selectItems value="#{vehiculoView.vehiculos}" var="v" 
+					itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}"/>
+			</h:selectOneMenu>
+
+			<h:outputLabel value="Desde: " />
+			<p:calendar value="#{vehiculoBean.desde}" id="fDesde" showOn="button" />
+
+			<h:outputLabel value="Hasta: " />
+			<p:calendar value="#{vehiculoBean.hasta}" id="fHasta" showOn="button" />
+			</h:panelGrid>  
+			</h:panelGroup>
+			<h:panelGroup>
 			<h:form>
-				<h:panelGrid columns="2" cellspacing="2">
-					<p:selectManyMenu>
-					</p:selectManyMenu>
-				
-				</h:panelGrid>
+			<m:map width="600" height="450" zoom="10" address="Buenos aires">
+			</m:map>
 			</h:form>
+			</h:panelGroup>
+		</h:panelGrid>
 	</ui:define>
 </ui:composition>
 </html>
