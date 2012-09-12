@@ -29,6 +29,10 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy="cliente")
 	private List<Operador> operadors;
 
+	//bi-directional many-to-one association to Transporte
+	@OneToMany(mappedBy="cliente")
+	private List<Transporte> transportes;
+
     public Cliente() {
     }
 
@@ -62,6 +66,14 @@ public class Cliente implements Serializable {
 
 	public void setOperadors(List<Operador> operadors) {
 		this.operadors = operadors;
+	}
+	
+	public List<Transporte> getTransportes() {
+		return this.transportes;
+	}
+
+	public void setTransportes(List<Transporte> transportes) {
+		this.transportes = transportes;
 	}
 	
 }
