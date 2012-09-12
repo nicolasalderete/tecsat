@@ -4,21 +4,24 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Java EE 6 Starter Application</title>
+	<title>Tec-Sat .:. Seguimiento y administracion de flotas</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<h:outputStylesheet name="screen.css" library="css" />
-	<script
+<!-- 	<script
 		src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBjbSgFx8efHDthfwHqZ09Nc2EfXHJyUt8"
 		type="text/javascript">
-</script>
+</script> -->
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;v=3.4" type="text/javascript"></script>
 </h:head>
 <h:body>
 	<div id="container">
 		<div id="header">
-			<ui:insert name="encabezado" />
+			<ui:include src="/WEB-INF/templates/encabezado.xhtml" />
 		</div>
 		<div id="menu">
-			<ui:insert name="menu" />
+			<ui:insert name="menu">
+				<ui:include src="/WEB-INF/templates/menu.xhtml" />
+			</ui:insert>
 		</div>
 		<div id="content">
 			<ui:insert name="content">
@@ -27,7 +30,7 @@
 		</div>
 		<div id="footer">
 			<p>
-				Copyright 2012 © All Rights Reserved :: TECSAT<br />
+				Copyright 2012 © All Rights Reserved :: TEC-SAT<br />
 			</p>
 		</div>
 	</div>
