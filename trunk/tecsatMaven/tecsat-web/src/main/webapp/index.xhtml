@@ -5,28 +5,47 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="content">
-		<p:panel header="Inicio de sesion" id="panelLogin" styleClass="panelLog">
+<h:head>
+	<title>Tec-Sat .:. Seguimiento y administracion de flotas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="screen.css" library="css" />
+</h:head>
+
+<h:body>
+	<div id="container">
+		<div id="header">
+			<ui:include src="/WEB-INF/templates/encabezado.xhtml" />
+		</div>
+		<div id="content">
+		
+			<h:panelGroup	>
+                    <h:messages layout="list" />
+            </h:panelGroup>
+                
 			<h:form id="loginForm">
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Usuario" for="user" />
-					<h:inputText value="#{loginBean.usuario}" label="Usuario" id="usario"
+					<h:inputText value="#{loginController.usuario}" label="Usuario" id="user"
 						requiredMessage="Campo obligatorio" required="true" />
 					<h:message for="user" errorStyle="color: red"
 						infoStyle="color: green" />
 
 					<h:outputLabel value="Contraseña" for="pass" />
-					<h:inputSecret value="#{loginBean.contrasenia}"
-						requiredMessage="Campo obligatorio" label="Contraseña" id="contrasenia"
+					<h:inputSecret value="#{loginController.contrasenia}"
+						requiredMessage="Campo obligatorio" label="Contraseña" id="pass"
 						required="true" />
 					<h:message for="pass" errorStyle="color: red"
 						infoStyle="color: green" />
 
-					<h:commandButton action="#{loginBean.isOperador}" value="Iniciar sesion" />
+					<h:commandButton id="buttonLogin" action="#{loginController.doLogin}" value="Iniciar sesion" />
 				</h:panelGrid>
 			</h:form>
-			</p:panel>
-	</ui:define>
-</ui:composition>
+		</div>
+		<div id="footer">
+			<p>
+				Copyright 2012 © All Rights Reserved :: TEC-SAT<br />
+			</p>
+		</div>
+	</div>
+</h:body>
 </html>

@@ -2,22 +2,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-	<p:menubar>
-		<p:menuitem value="Home" url="/user/home.xhtml" icon="ui-icon-contact"/>
-		<p:submenu label="Localizacion"  icon="ui-icon-contact">
-			<p:submenu label="Vehiculos"  icon="ui-icon-contact">
-				<p:menuitem value="Actual" url="/user/vehiculo.xhtml" />
-				<p:menuitem value="Flotas" url="/user/flota.xhtml" />
+	<h:form>
+		<p:menubar id="menubar">
+			<p:menuitem value="Home" action="#{menuController.doHome}"
+				icon="ui-icon-contact" />
+			<p:menuitem value="Localizacion" action="#{menuController.doLocalizacion}"
+				icon="ui-icon-contact" />
+			<p:menuitem value="Reportes" action="#{menuController.doReportes}"
+				icon="ui-icon-contact" />
+			<p:menuitem value="Alertas" action="#{menuController.doAlertas}"
+				icon="ui-icon-contact" />
+			<p:submenu label="Administracion" align="left" icon="ui-icon-contact">
+				<p:menuitem value="Operadores" action="#{menuController.doAdminOperadores}"
+					icon="ui-icon-contact" />
+				<p:menuitem value="Vehiculos" action="#{menuController.doAdminVehiculos}"
+					icon="ui-icon-contact" />
 			</p:submenu>
-			<p:menuitem value="Flotas" url="/user/flota.xhtml" icon="ui-icon-contact"/>
-		</p:submenu>
-		<p:menuitem value="Reportes" url="/user/reportes.xhtml"  icon="ui-icon-contact"/>
-		<p:menuitem value="Alertas" url="/user/alertas.xhtml"  icon="ui-icon-contact"/>
-		<p:submenu label="Administracion" align="left"  icon="ui-icon-contact">
-			<p:menuitem value="Operadores" url="/private/admin.xhtml"  icon="ui-icon-contact"/>
-			<p:menuitem value="Vehiculos" url="/private/admin.xhtml"  icon="ui-icon-contact"/>
-		</p:submenu>
-	</p:menubar>
-
+			<!-- <p:separator id="separador"></p:separator>  -->
+			<p:menuitem id="logout" value="Cerrar sesion"
+				action="#{loginController.doLogOut}" icon="ui-icon-contact"></p:menuitem>
+		</p:menubar>
+	</h:form>
 </ui:composition>
