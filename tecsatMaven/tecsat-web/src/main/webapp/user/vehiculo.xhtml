@@ -3,35 +3,45 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+	xmlns:p="http://primefaces.org/ui">
+
 
 <ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/WEB-INF/templates/menu.xhtml" />
+	</ui:define>
 	<ui:define name="content">
-	<h:panelGrid columns="2">
-			<h:panelGroup>
-			<h:panelGrid columns="2">
-			<h:outputLabel value="Vehiculo: " />
-			<h:selectOneMenu value="#{vehiculoBean.vehiculoId}">
-				<f:selectItem noSelectionOption="true" itemValue="Seleccione..."/>
-				<f:selectItems value="#{vehiculoView.vehiculos}" var="v" 
-					itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}"/>
-			</h:selectOneMenu>
 
-			<h:outputLabel value="Desde: " />
-			<p:calendar value="#{vehiculoBean.desde}" id="fDesde" showOn="button" />
-
-			<h:outputLabel value="Hasta: " />
-			<p:calendar value="#{vehiculoBean.hasta}" id="fHasta" showOn="button" />
-			</h:panelGrid>  
-			</h:panelGroup>
-			<h:panelGroup>
+		<div id="panelForm">
 			<h:form>
-			<m:map width="600" height="450" zoom="10" address="Buenos aires">
-			</m:map>
+				<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
+				<h:selectOneMenu value="#{vehiculoBean.vehiculoId}"
+					id="selectVehiculo">
+					<f:selectItem noSelectionOption="true" itemValue="Seleccione..." />
+					<f:selectItems value="#{vehiculoView.vehiculos}" var="v"
+						itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}" />
+				</h:selectOneMenu>
+				<br />
+				<h:outputLabel value="Obtener posición actual" for="checkPos" />
+				<h:selectBooleanCheckbox value="true" id="checkPos" />
+				<br />
+				<h:outputLabel value="Desde: " for="fDesde" />
+				<h:inputText value="#{vehiculoBean.desde}" id="fDesde" />
+				<br />
+				<h:outputLabel value="Hasta: " for="fHasta" />
+				<h:inputText value="#{vehiculoBean.hasta}" id="fHasta" />
+				<br />
+				<h:commandButton action="#{vehiculoBean.consulta}" value="Consultar" />
 			</h:form>
-			</h:panelGroup>
-		</h:panelGrid>
+		</div>
+		<div id="panelMap">
+			<h:form>
+				<p:gmap streetView="false" center="-34.896914,-60.019647" zoom="15" type="ROADMAP"   
+        			style="width:100%;height:500px" />
+			</h:form>
+		</div>
+
+
 	</ui:define>
 </ui:composition>
 </html>
