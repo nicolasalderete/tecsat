@@ -9,5 +9,5 @@ public interface LoginServiceLocal {
 
 	public boolean isOperador(String usuario, String contrasenia) throws Exception;
 	
-	public Operador findByOpe (String usuario, String contrasenia) throws Exception;
+	public Operador findByOpe (String usuario) throws Exception;
 }

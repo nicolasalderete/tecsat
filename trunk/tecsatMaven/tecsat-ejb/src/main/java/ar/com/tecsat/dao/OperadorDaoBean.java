@@ -38,4 +38,16 @@ public class OperadorDaoBean implements OperadorDao {
 		return (Operador) query.getSingleResult();
 	}
 
+	/* (non-Javadoc)
+	 * @see ar.com.tecsat.dao.OperadorDao#findOperador(java.lang.String)
+	 */
+	@Override
+	public Operador findOperador(String usuario) {
+		String sqlQuery = "select * from operador "
+				+"where ope_nombre = ? ";
+		Query query = em.createNativeQuery(sqlQuery, Operador.class);
+		query.setParameter(1, usuario);
+		return (Operador) query.getSingleResult();
+	}
+
 }
