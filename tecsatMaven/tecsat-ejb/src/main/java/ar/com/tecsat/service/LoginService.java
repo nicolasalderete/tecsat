@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import ar.com.tecsat.dao.OperadorDao;
+import ar.com.tecsat.exception.AdministrativeException;
 import ar.com.tecsat.modelo.Operador;
 import ar.com.tecsat.service.local.LoginServiceLocal;
 
@@ -26,7 +27,7 @@ public class LoginService implements LoginServiceLocal {
 	 */
 	@Override
 	public boolean isOperador(String usuario, String contrasenia)
-			throws Exception {
+			throws AdministrativeException, Exception {
 		Operador ope = operadorDao.findOperador(usuario, contrasenia);
 		return ope != null;
 	}
@@ -35,9 +36,10 @@ public class LoginService implements LoginServiceLocal {
 	 * @see ar.com.tecsat.service.local.LoginServiceLocal#findByOpe(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Operador findByOpe(String usuario, String contrasenia)
-			throws Exception {
-		return operadorDao.findOperador(usuario, contrasenia);
+	public Operador findByOpe(String usuario)
+			throws AdministrativeException, Exception {
+		Operador ope = operadorDao.findOperador(usuario);
+		return ope;
 	}
 	
 	
