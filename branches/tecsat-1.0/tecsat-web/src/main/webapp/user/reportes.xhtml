@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/WEB-INF/templates/menu.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid columns="4">
+				<h:outputLabel value="Flota" for="selectFlota" />
+				<h:selectOneMenu value="#{reportesController.flotaId}">
+					<f:selectItem itemLabel="seleccione..."/>
+					<f:selectItems value="#{reportesController.flotaId}" var="f" 
+						itemLabel="#{f.traDescripcion}" itemValue="#{f.traId}"/>
+				</h:selectOneMenu>
+				<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
+				<h:selectOneMenu value="#{reportesController.vehiculoId}" id="selectVehiculo">
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					<f:selectItems value="#{reportesController.vehiculos}" var="v"
+						itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Desde: " for="fDesde" />
+				<h:inputText value="#{reportesController.desde}" id="fDesde" />
+				<h:outputLabel value="Hasta: " for="fHasta" />
+				<h:inputText value="#{reportesController.hasta}" id="fHasta" />
+			</h:panelGrid>
+			<h:dataTable value="#{reportesController.data}" var="item">
+              <h:column>
+                  <f:facet name="header" >
+                      <h:outputText value="Item Category"/>
+                  </f:facet>    
+                  <h:outputText value="#{item.category}"/>
+              </h:column>
+          </h:dataTable>
+		</h:form>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>
+</html>
