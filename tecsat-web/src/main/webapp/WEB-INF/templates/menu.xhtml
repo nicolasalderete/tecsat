@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:form>
+		<h:panelGrid columns="7">
+			<h:commandLink action="#{menuController.doHome}" value="Home" />
+			<h:commandLink action="#{menuController.doLocalizacion}"
+				value="Localizacion" />
+			<h:commandLink action="#{menuController.doReportes}" value="Reportes" />
+			<h:commandLink action="#{menuController.doAlertas}" value="Alertas" />
+			<h:commandLink action="#{menuController.doAdminOperadores}"
+				value="Admin Ope" />
+			<h:commandLink action="#{menuController.doAdminVehiculos}"
+				value="Admin Veh" />
+			<h:commandLink action="#{menuController.doLogout}"
+				value="Cerrar Sesion" />
+		</h:panelGrid>
+	</h:form>
+</ui:composition>
