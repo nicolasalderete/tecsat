@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Tec-Sat .:. Seguimiento y administracion de flotas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="screen.css" library="css" />
+	<script src="http://maps.google.com/maps/api/js?sensor=true"
+		type="text/javascript"></script>
+</h:head>
+<h:body>
+	<div id="container">
+		<div id="header">
+			<ui:include src="/WEB-INF/templates/encabezado.xhtml" />
+		</div>
+		<div id="menu">
+			<ui:insert name="menu">
+			</ui:insert>
+		</div>
+		<div id="content">
+			<ui:insert name="content">
+            [Template content will be inserted here]
+         </ui:insert>
+		</div>
+		<div id="footer">
+			<p>
+				Copyright 2012 © All Rights Reserved :: TEC-SAT<br />
+			</p>
+		</div>
+	</div>
+</h:body>
+</html>
