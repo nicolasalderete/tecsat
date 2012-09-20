@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="menu">
@@ -13,33 +13,41 @@
 
 		<div id="panelForm">
 			<h:form>
-				<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
-				<h:selectOneMenu value="#{vehiculoController.vehiculoId}"
-					id="selectVehiculo">
-					<f:selectItem noSelectionOption="true" itemValue="Seleccione..." />
-					<f:selectItems value="#{vehiculoController.vehiculos}" var="v"
-						itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}" />
-				</h:selectOneMenu>
+				<h:panelGrid id="panel" columns="2" cellspacing="5px">
+					
+					<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
+					<h:selectOneMenu value="#{vehiculoController.vehiculoId}"
+						id="selectVehiculo">
+						<f:selectItem noSelectionOption="true" itemValue="Seleccione..." />
+						<f:selectItems value="#{vehiculoController.vehiculos}" var="v"
+							itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}" />
+					</h:selectOneMenu>
 
-				<h:outputLabel value="Obtener posición actual" for="checkPos" />
-				<h:selectBooleanCheckbox value="true" id="checkPos" />
+					<h:selectBooleanCheckbox value="true" id="checkPos" />
+					<h:outputLabel value="Obtener posición actual" for="checkPos" />
 
-				<h:outputLabel value="Desde: " for="fDesde" />
-				<h:inputText value="#{vehiculoController.desde}" id="fDesde" />
+					<h:outputLabel value="Desde: " for="fDesde" />
+					<h:inputText value="#{vehiculoController.desde}" id="fDesde">
+						<f:convertDateTime for="fDesde" pattern="dd/MM/yyyy" />
+					</h:inputText>
+					
+					<h:outputLabel value="Hasta: " for="fHasta" />
+					<h:inputText value="#{vehiculoController.hasta}" id="fHasta">
+						<f:convertDateTime for="fHasta" pattern="dd/MM/yyyy" />
+					</h:inputText>
 
-				<h:outputLabel value="Hasta: " for="fHasta" />
-				<h:inputText value="#{vehiculoController.hasta}" id="fHasta" />
+				</h:panelGrid>
 
-				<h:commandButton action="#{vehiculoController.doConsulta}" value="Consultar" />
+				<h:commandButton action="#{vehiculoController.doConsulta}"
+					value="Consultar" />
+
 			</h:form>
 		</div>
 		<div id="panelMap">
 			<h:form>
-				<m:map width="100%" height="500px" binding="vehiculoController.map">
-				</m:map>
+				
 			</h:form>
 		</div>
-
 
 	</ui:define>
 </ui:composition>
