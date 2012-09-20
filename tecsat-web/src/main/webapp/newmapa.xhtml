@@ -3,27 +3,23 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+	xmlns:p ="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="encabezado">
-		este es el head, logo, imagen, texto
-	</ui:define>
-	<ui:define name="menu">
-		<ui:include src="/WEB-INF/templates/menu.xhtml" />
-	</ui:define>
-	<ui:define name="content">
+<h:head>
+	<title>Tec-Sat .:. Seguimiento y administracion de flotas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="screen.css" library="css" />
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+</h:head>
+<h:body>
+	<div>
 		<h:form>
-			<h:panelGrid>
-				<m:map id="map" width="600" height="480px"
-					enableScrollWheelZoom="true" latitude="42.351505"
-					longitude="-71.094455" zoom="15">
-					<m:mapControl name="GMapTypeControl" />
-					<m:mapControl name="GLargeMapControl"
-						position="G_ANCHOR_BOTTOM_RIGHT" />
-				</m:map>
-			</h:panelGrid>
+		
+			<p:gmap center="-23.543845,-46.643829" zoom="10" type="roadmap" 
+					style="width:100%;heigth:500px" >
+			</p:gmap>
+			
 		</h:form>
-	</ui:define>
-</ui:composition>
+	</div>
+</h:body>
 </html>
