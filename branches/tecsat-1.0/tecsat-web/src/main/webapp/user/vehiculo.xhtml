@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:m="http://code.google.com/p/gmaps4jsf/">
 
 <ui:composition template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="menu">
@@ -12,9 +12,11 @@
 	<ui:define name="content">
 
 		<div id="panelForm">
+			
 			<h:form>
-				<h:panelGrid id="panel" columns="2" cellspacing="5px">
-					
+
+				<h:panelGrid id="panel" columns="2" cellspacing="10">
+
 					<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
 					<h:selectOneMenu value="#{vehiculoController.vehiculoId}"
 						id="selectVehiculo">
@@ -23,29 +25,35 @@
 							itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}" />
 					</h:selectOneMenu>
 
-					<h:selectBooleanCheckbox value="true" id="checkPos" />
 					<h:outputLabel value="Obtener posición actual" for="checkPos" />
+					<h:selectBooleanCheckbox value="true" id="checkPos" />
 
 					<h:outputLabel value="Desde: " for="fDesde" />
-					<h:inputText value="#{vehiculoController.desde}" id="fDesde">
+					<h:inputText value="#{vehiculoController.desde}" id="fDesde"
+						disabled="#{vehiculoController.posActual}" >
 						<f:convertDateTime for="fDesde" pattern="dd/MM/yyyy" />
 					</h:inputText>
-					
+
 					<h:outputLabel value="Hasta: " for="fHasta" />
-					<h:inputText value="#{vehiculoController.hasta}" id="fHasta">
+					<h:inputText value="#{vehiculoController.hasta}" id="fHasta"
+						disabled="#{vehiculoController.posActual}">
 						<f:convertDateTime for="fHasta" pattern="dd/MM/yyyy" />
 					</h:inputText>
 
-				</h:panelGrid>
+					<h:commandButton action="#{vehiculoController.doConsulta}" 
+						value="Consultar" />
 
-				<h:commandButton action="#{vehiculoController.doConsulta}"
-					value="Consultar" />
+				</h:panelGrid>
 
 			</h:form>
 		</div>
 		<div id="panelMap">
 			<h:form>
-				
+				<m:map width="100%" height="500px" binding="#{vehiculoController.map}" 
+						latitude="-34.896914" longitude="-60.019647">
+					<m:mapControl name="GLargeMapControl" position="G_ANCHOR_BOTTOM_RIGHT" />
+					<m:mapControl name="GMapTypeControl" />
+				</m:map>
 			</h:form>
 		</div>
 
