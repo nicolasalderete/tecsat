@@ -10,27 +10,105 @@
 		<ui:include src="/WEB-INF/templates/menu.xhtml" />
 	</ui:define>
 	<ui:define name="content">
-Bienvenidos!!
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />	</ui:define>
+		<h:form>
+			<h:panelGrid columns="2" cellspacing="10" width="100%">
+				<h:panelGroup>
+					<h:outputLabel value="Flota" for="selectFlota" />
+					<h:selectOneMenu value="">
+						<f:selectItem itemLabel="seleccione..." />
+					</h:selectOneMenu>
+
+					<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
+					<h:selectOneMenu value="" id="selectVehiculo">
+						<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Desde: " for="fDesde" />
+					<h:inputText value="" id="fDesde">
+						<f:convertDateTime for="fDesde" pattern="dd/MM/yyyy" />
+					</h:inputText>
+
+					<h:outputLabel value="Hasta: " for="fHasta" />
+					<h:inputText value="" id="fHasta">
+						<f:convertDateTime for="fHasta" pattern="dd/MM/yyyy" />
+					</h:inputText>
+					
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<h:outputLabel value="Estado" for="selectFlotat" />
+					<h:selectOneMenu value="">
+						<f:selectItem itemLabel="seleccione..." />
+					</h:selectOneMenu>
+
+					<h:outputLabel value="Tipo: " for="selectVehiculot" />
+					<h:selectOneMenu value="" id="selectVehiculot">
+						<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Velocidad: " for="fDesdet" />
+					<h:inputText value="" id="fDesdet">
+						<f:convertDateTime for="fDesdet" pattern="dd/MM/yyyy" />
+					</h:inputText>
+
+					<h:outputLabel value="Hasta: " for="fHastat" />
+					<h:inputText value="" id="fHastat">
+						<f:convertDateTime for="fHastat" pattern="dd/MM/yyyy" />
+					</h:inputText>
+					
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			<h:commandButton action="#{vehiculoController.doConsulta}"
+					value="Consultar" />
+					
+			<h:dataTable value="" var="item" id="dataTable" width="100%">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Flota" />
+					</f:facet>
+					<h:outputText value="" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vehiculo" />
+					</f:facet>
+					<h:outputText value="" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha de evento" />
+					</f:facet>
+					<h:outputText value="" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Latitud" />
+					</f:facet>
+					<h:outputText value="" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Longitud" />
+					</f:facet>
+					<h:outputText value="" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ver Mapa" />
+					</f:facet>
+					<h:outputText value="" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
 </ui:composition>
 </html>
