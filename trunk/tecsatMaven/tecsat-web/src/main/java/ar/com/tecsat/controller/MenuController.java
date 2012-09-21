@@ -46,5 +46,9 @@ public class MenuController implements Serializable{
 	public String doAdminVehiculos () {
 		return "success";
 	}
+	
+	public String doLogout () {
+		return "success";
+	}
 
 }
