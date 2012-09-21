@@ -3,7 +3,7 @@
  * @version $Revision: $ $Date: $ $Author: $ $State: $
  * 
  */
-package ar.com.tecsat.dao;
+package ar.com.tecsat.dao.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ar.com.tecsat.dao.TransporteDao;
 import ar.com.tecsat.modelo.Transporte;
 
 /**

@@ -18,7 +18,7 @@ public class EventoPK implements Serializable {
 	@Column(name="dis_id", unique=true, nullable=false)
 	private int disId;
 
-    @Temporal( TemporalType.DATE)
+    @Temporal( TemporalType.TIMESTAMP)
 	@Column(name="time_stamp", unique=true, nullable=false)
 	private java.util.Date timeStamp;
 

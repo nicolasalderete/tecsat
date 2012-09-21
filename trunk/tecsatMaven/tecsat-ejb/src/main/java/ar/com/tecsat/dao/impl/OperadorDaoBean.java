@@ -1,10 +1,11 @@
-package ar.com.tecsat.dao;
+package ar.com.tecsat.dao.impl;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ar.com.tecsat.dao.OperadorDao;
 import ar.com.tecsat.modelo.Operador;
 
 /**
