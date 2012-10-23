@@ -46,6 +46,28 @@ public abstract class BaseController {
     protected long recuperarIdParametro(String parametro){
         return Long.parseLong(recuperarParametro(parametro));
     }
+    
+    /**
+     * Recupera un Objeto guardado en la session
+     * pasando como parametro la key
+     * 
+     * @param key
+     * @return
+     */
+    protected Object getParameterSession(String key){
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	return context.getAttributes().get(key);
+    }
 
-
+    /**
+     * Guarda un objeto en la session pasando como parametro
+     * la key y el valor
+     * 
+     * @param key
+     * @param value
+     */
+	protected void putParameterSession(String key, Object value){
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	context.getExternalContext().getSessionMap().put(key, value);
+    }
 }

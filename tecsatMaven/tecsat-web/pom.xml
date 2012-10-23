@@ -29,18 +29,21 @@
 
 	<dependencies>
 
+		 
+		<!--
+		
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>3.4.RC1</version>
-		</dependency>
-	
+		</dependency> 
+		-->
 		<dependency>
-			<groupId>org.icefaces</groupId>
-			<artifactId>icefaces</artifactId>
-			<version>1.8.2</version>
+			<groupId>com.googlecode.gmaps4jsf</groupId>
+			<artifactId>gmaps4jsf-core</artifactId>
+			<version>1.1.4</version>
 		</dependency>
-            
+		
 
 		<!-- Dependency on the EJB module so we can use it's services if needed -->
 		<dependency>
@@ -88,12 +91,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.googlecode.gmaps4jsf</groupId>
-			<artifactId>gmaps4jsf-core</artifactId>
-			<version>1.1.4</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -106,6 +103,46 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			
+			<plugin> 
+                <groupId>org.apache.maven.plugins</groupId> 
+                <artifactId>maven-eclipse-plugin</artifactId> 
+                <version>2.6</version> 
+                <configuration> 
+                    <ajdtVersion>none</ajdtVersion> 
+                    <additionalBuildcommands> 
+                        <buildCommand> 
+                            <name> 
+                                org.eclipse.jdt.core.javabuilder 
+                            </name> 
+                        </buildCommand> 
+                        <buildCommand> 
+                            <name> 
+                                org.eclipse.wst.common.project.facet.core.builder 
+                            </name> 
+                        </buildCommand> 
+                        <buildCommand> 
+                            <name> 
+                                org.eclipse.wst.validation.validationbuilder 
+                            </name> 
+                        </buildCommand> 
+                    </additionalBuildcommands> 
+                    <additionalProjectnatures> 
+                        <projectnature> 
+                            org.eclipse.wst.common.project.facet.core.nature 
+                        </projectnature> 
+                        <projectnature> 
+                            org.eclipse.jdt.core.javanature 
+                        </projectnature> 
+                        <projectnature> 
+                            org.eclipse.wst.common.modulecore.ModuleCoreNature 
+                        </projectnature> 
+                        <projectnature> 
+                            org.eclipse.jem.workbench.JavaEMFNature 
+                        </projectnature> 
+                    </additionalProjectnatures> 
+                </configuration> 
+            </plugin>
 		</plugins>
 	</build>
 

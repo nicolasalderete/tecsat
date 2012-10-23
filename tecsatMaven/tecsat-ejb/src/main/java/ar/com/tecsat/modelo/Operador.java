@@ -2,6 +2,7 @@ package ar.com.tecsat.modelo;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -15,17 +16,30 @@ public class Operador implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ope_id", unique=true, nullable=false)
-	private int opeId;
+	@Column(unique=true, nullable=false)
+	private int id;
 
-	@Column(name="ope_nombre", nullable=false, length=20)
-	private String opeNombre;
+	@Column(nullable=false, length=20)
+	private String celular;
 
-	@Column(name="ope_password", nullable=false, length=20)
-	private String opePassword;
+	@Column(nullable=false, length=20)
+	private String dni;
 
-	@Column(name="ope_usuario", nullable=false, length=20)
-	private String opeUsuario;
+	@Column(nullable=false, length=2)
+	private String estado;
+
+    @Temporal( TemporalType.TIMESTAMP)
+	@Column(name="fecha_actualizacion", nullable=false)
+	private Date fechaActualizacion;
+
+	@Column(nullable=false, length=20)
+	private String mail;
+
+	@Column(nullable=false, length=20)
+	private String nombre;
+
+	@Column(nullable=false, length=20)
+	private String pass;
 
 	//bi-directional many-to-one association to Cliente
     @ManyToOne
@@ -35,36 +49,68 @@ public class Operador implements Serializable {
     public Operador() {
     }
 
-	public int getOpeId() {
-		return this.opeId;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setOpeId(int opeId) {
-		this.opeId = opeId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getOpeNombre() {
-		return this.opeNombre;
+	public String getCelular() {
+		return this.celular;
 	}
 
-	public void setOpeNombre(String opeNombre) {
-		this.opeNombre = opeNombre;
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 
-	public String getOpePassword() {
-		return this.opePassword;
+	public String getDni() {
+		return this.dni;
 	}
 
-	public void setOpePassword(String opePassword) {
-		this.opePassword = opePassword;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
-	public String getOpeUsuario() {
-		return this.opeUsuario;
+	public String getEstado() {
+		return this.estado;
 	}
 
-	public void setOpeUsuario(String opeUsuario) {
-		this.opeUsuario = opeUsuario;
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Date getFechaActualizacion() {
+		return this.fechaActualizacion;
+	}
+
+	public void setFechaActualizacion(Date fechaActualizacion) {
+		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public String getMail() {
+		return this.mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getPass() {
+		return this.pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public Cliente getCliente() {

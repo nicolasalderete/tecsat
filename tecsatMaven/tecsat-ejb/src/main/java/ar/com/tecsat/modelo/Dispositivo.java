@@ -2,6 +2,7 @@ package ar.com.tecsat.modelo;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -15,29 +16,64 @@ public class Dispositivo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="dis_id", unique=true, nullable=false)
-	private int disId;
+	@Column(unique=true, nullable=false)
+	private int id;
 
-	@Column(name="dis_nombre", nullable=false, length=20)
-	private String disNombre;
+	@Column(nullable=false, length=20)
+	private String codigo;
+
+	@Column(length=20)
+	private String descripcion;
+
+	//bi-directional many-to-one association to Evento
+	@OneToMany(mappedBy="dispositivo")
+	private List<Evento> eventos;
+
+	//bi-directional many-to-one association to Transporte
+	@OneToMany(mappedBy="dispositivo")
+	private List<Transporte> transportes;
 
     public Dispositivo() {
     }
 
-	public int getDisId() {
-		return this.disId;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setDisId(int disId) {
-		this.disId = disId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getDisNombre() {
-		return this.disNombre;
+	public String getCodigo() {
+		return this.codigo;
 	}
 
-	public void setDisNombre(String disNombre) {
-		this.disNombre = disNombre;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public List<Evento> getEventos() {
+		return this.eventos;
+	}
+
+	public void setEventos(List<Evento> eventos) {
+		this.eventos = eventos;
+	}
+	
+	public List<Transporte> getTransportes() {
+		return this.transportes;
+	}
+
+	public void setTransportes(List<Transporte> transportes) {
+		this.transportes = transportes;
+	}
+	
 }

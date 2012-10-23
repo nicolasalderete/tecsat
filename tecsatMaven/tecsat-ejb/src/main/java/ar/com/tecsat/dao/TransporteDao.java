@@ -13,6 +13,8 @@ public interface TransporteDao {
 	 * @param clidId
 	 * @return
 	 */
-	List<Transporte> findByCliente (int clidId);
+	List<Transporte> findByCliente(int clid_id);
+	
+	List<Transporte> findByClienteAndDispositivoNotNull(int cli_id);
 	
 }

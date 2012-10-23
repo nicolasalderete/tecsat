@@ -26,9 +26,9 @@ public class LoginService implements LoginServiceLocal {
 	 * @see ar.com.tecsat.service.local.LoginServiceLocal#isOperador(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean isOperador(String usuario, String contrasenia)
+	public boolean autenticarOperador(String dni, String pass)
 			throws AdministrativeException, Exception {
-		Operador ope = operadorDao.findOperador(usuario, contrasenia);
+		Operador ope = operadorDao.findOperador(dni, pass);
 		return ope != null;
 	}
 
@@ -36,9 +36,8 @@ public class LoginService implements LoginServiceLocal {
 	 * @see ar.com.tecsat.service.local.LoginServiceLocal#findByOpe(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Operador findByOpe(String usuario)
-			throws AdministrativeException, Exception {
-		Operador ope = operadorDao.findOperador(usuario);
+	public Operador obtenerOperador(String dni) throws AdministrativeException, Exception {
+		Operador ope = operadorDao.findByOperador(dni);
 		return ope;
 	}
 	
