@@ -9,5 +9,5 @@ import ar.com.tecsat.modelo.Transporte;
 @Local
 public interface VehiculoServiceLocal {
 
-	public List<Transporte> transporteByCliente (int cli);
+	public List<Transporte> transporteByClienteWithDispositivo (int cli);
 }

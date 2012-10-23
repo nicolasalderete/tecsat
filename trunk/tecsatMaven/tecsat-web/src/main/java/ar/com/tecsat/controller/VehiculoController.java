@@ -6,6 +6,7 @@
 package ar.com.tecsat.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,14 +29,14 @@ import com.googlecode.gmaps4jsf.component.marker.Marker;
  */
 @ManagedBean(name="vehiculoController")
 @RequestScoped
-public class VehiculoController implements Serializable{
+public class VehiculoController extends BaseController implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private long vehiculoId;
+	private int dispositivoId;
 	
 	private boolean posActual = true;
 	
@@ -63,8 +64,7 @@ public class VehiculoController implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		this.vehiculos = vehiculoService.transporteByCliente(1);
-		this.setMap(new Map());
+		this.vehiculos = vehiculoService.transporteByClienteWithDispositivo(1);
 	}
 	
 	/**
@@ -72,11 +72,33 @@ public class VehiculoController implements Serializable{
 	 */
 	
 	public void doConsulta (){
-		Evento event = eventoService.obtenerPosicion();
-		Marker mark = new Marker();
-		mark.setLatitude(event.getLatitud());
-		mark.setLongitude(event.getLongitud());
-		this.map.getChildren().add(mark);
+		List<Evento> historial = eventoService.obtenerHistorial(1, 1);
+		//Obtener marcas de posicion
+		obtenerMarcas(this.map, historial);
+		//Obtener lineas de rutas
+		obtenerPolilineas(this.map, historial);
+	}
+
+	/**
+	 * @param map2
+	 * @param historial
+	 */
+	private void obtenerPolilineas(Map map2, List<Evento> historial) {
+	}
+
+	/**
+	 * @param map2
+	 * @param historial
+	 */
+	private void obtenerMarcas(Map map2, List<Evento> historial) {
+		ArrayList<Marker> markers = new ArrayList<Marker>();
+		for (Evento evento : historial) {
+			Marker mark = new Marker();
+			mark.setLatitude(evento.getLatitud());
+			mark.setLongitude(evento.getLongitud());
+			markers.add(mark);
+		}
+		this.map.getChildren().addAll(markers);
 	}
 
 	/**
@@ -105,20 +127,6 @@ public class VehiculoController implements Serializable{
 	 */
 	public void setHasta(Date hasta) {
 		this.hasta = hasta;
-	}
-
-	/**
-	 * @return the vehiculoId
-	 */
-	public long getVehiculoId() {
-		return vehiculoId;
-	}
-
-	/**
-	 * @param vehiculoId the vehiculoId to set
-	 */
-	public void setVehiculoId(long vehiculoId) {
-		this.vehiculoId = vehiculoId;
 	}
 
 	/**
@@ -189,5 +197,19 @@ public class VehiculoController implements Serializable{
 	 */
 	public void setMap(Map map) {
 		this.map = map;
+	}
+
+	/**
+	 * @return the dispositivoId
+	 */
+	public int getDispositivoId() {
+		return dispositivoId;
+	}
+
+	/**
+	 * @param dispositivoId the dispositivoId to set
+	 */
+	public void setDispositivoId(int dispositivoId) {
+		this.dispositivoId = dispositivoId;
 	}
 }

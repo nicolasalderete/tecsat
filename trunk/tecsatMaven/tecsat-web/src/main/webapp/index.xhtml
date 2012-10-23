@@ -22,15 +22,15 @@
                 
 			<h:form id="loginForm">
 				<h:panelGrid columns="3">
-					<h:outputLabel value="Usuario" for="user" />
-					<h:inputText value="#{loginController.usuario}" label="Usuario" id="user"
+					<h:outputLabel value="DNI: " for="user" />
+					<h:inputText value="#{loginController.dni}" label="dni" id="user"
 						requiredMessage="Campo obligatorio" required="true" />
 					<h:message for="user" errorStyle="color: red"
 						infoStyle="color: green" />
 
-					<h:outputLabel value="Contraseña" for="pass" />
-					<h:inputSecret value="#{loginController.contrasenia}"
-						requiredMessage="Campo obligatorio" label="Contraseña" id="pass"
+					<h:outputLabel value="Password: " for="pass" />
+					<h:inputSecret value="#{loginController.pass}"
+						requiredMessage="Campo obligatorio" label="pass" id="pass"
 						required="true" />
 					<h:message for="pass" errorStyle="color: red"
 						infoStyle="color: green" />

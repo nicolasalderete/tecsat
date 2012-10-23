@@ -13,11 +13,11 @@ public interface OperadorDao {
 	 * @param contrasenia
 	 * @return
 	 */
-	public Operador findOperador(String usuario, String contrasenia);
+	public Operador findOperador(String dni, String pass);
 
 	/**
 	 * @param usuario
 	 * @return
 	 */
-	public Operador findOperador(String usuario);
+	public Operador findByOperador(String usuario);
 }

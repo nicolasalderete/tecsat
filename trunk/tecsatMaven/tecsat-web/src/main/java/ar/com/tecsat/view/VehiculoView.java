@@ -33,7 +33,7 @@ public class VehiculoView {
 	
 	@PostConstruct
 	public void init() {
-		this.vehiculos = vehiculoService.transporteByCliente(1);
+		this.vehiculos = vehiculoService.transporteByClienteWithDispositivo(1);
 	}
 	
 

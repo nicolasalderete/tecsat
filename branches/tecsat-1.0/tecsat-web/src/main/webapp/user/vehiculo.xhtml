@@ -18,11 +18,11 @@
 				<h:panelGrid id="panel" columns="2" cellspacing="10">
 
 					<h:outputLabel value="Vehiculo: " for="selectVehiculo" />
-					<h:selectOneMenu value="#{vehiculoController.vehiculoId}"
+					<h:selectOneMenu value="#{vehiculoController.dispositivoId}"
 						id="selectVehiculo">
 						<f:selectItem noSelectionOption="true" itemValue="Seleccione..." />
 						<f:selectItems value="#{vehiculoController.vehiculos}" var="v"
-							itemLabel="#{v.traDescripcion}" itemValue="#{v.traId}" />
+							itemLabel="#{v.descripcion}" itemValue="#{v.dispositivo.id}" />
 					</h:selectOneMenu>
 
 					<h:outputLabel value="Obtener posición actual" for="checkPos" />

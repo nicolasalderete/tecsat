@@ -27,8 +27,8 @@ public class VehiculoService implements VehiculoServiceLocal {
 	 * @see ar.com.tecsat.service.local.VehiculoServiceLocal#transporteByCliente(ar.com.tecsat.modelo.Cliente)
 	 */
 	@Override
-	public List<Transporte> transporteByCliente(int cli) {
-		return transporteDao.findByCliente(cli);
+	public List<Transporte> transporteByClienteWithDispositivo(int cli) {
+		return transporteDao.findByClienteAndDispositivoNotNull(cli);
 	}
     
     

@@ -22,6 +22,16 @@ public class Evento implements Serializable {
 	@Column(nullable=false, length=20)
 	private String longitud;
 
+	//bi-directional many-to-one association to Cliente
+    @ManyToOne
+	@JoinColumn(name="cli_id", nullable=false, insertable=false, updatable=false)
+	private Cliente cliente;
+
+	//bi-directional many-to-one association to Dispositivo
+    @ManyToOne
+	@JoinColumn(name="dis_id", nullable=false, insertable=false, updatable=false)
+	private Dispositivo dispositivo;
+
     public Evento() {
     }
 
@@ -49,4 +59,20 @@ public class Evento implements Serializable {
 		this.longitud = longitud;
 	}
 
+	public Cliente getCliente() {
+		return this.cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	public Dispositivo getDispositivo() {
+		return this.dispositivo;
+	}
+
+	public void setDispositivo(Dispositivo dispositivo) {
+		this.dispositivo = dispositivo;
+	}
+	
 }

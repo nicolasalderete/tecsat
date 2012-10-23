@@ -7,7 +7,7 @@ import ar.com.tecsat.modelo.Operador;
 @Local
 public interface LoginServiceLocal {
 
-	public boolean isOperador(String usuario, String contrasenia) throws Exception;
+	public boolean autenticarOperador(String dni, String pass) throws Exception;
 	
-	public Operador findByOpe (String usuario) throws Exception;
+	public Operador obtenerOperador(String dni) throws Exception;
 }

@@ -28,15 +28,10 @@ public class LoginController extends BaseController implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1283869214860680245L;
-
-	private Operador operadorActual;
 	
-	private Cliente clienteActual;
+	private String dni = "";
 	
-
-	private String usuario = "";
-	
-	private String contrasenia = "";
+	private String pass = "";
 
 	@EJB
 	private LoginServiceLocal loginService;
@@ -56,11 +51,14 @@ public class LoginController extends BaseController implements Serializable{
 	 */
 	public String doLogin () {
 		try {
-			if (loginService.isOperador(usuario, contrasenia)) {
-				operadorActual = loginService.findByOpe(usuario);
-				clienteActual = operadorActual.getCliente();
-				contrasenia = "";
-				usuario = "";
+			if (loginService.autenticarOperador(this.dni, this.pass)) {
+				Operador ope = loginService.obtenerOperador(this.dni);
+				ope.setPass("");
+				this.pass = "";
+				Cliente cli = ope.getCliente();
+				this.putParameterSession("cliente", cli);
+				this.putParameterSession("operador", ope);
+				this.dni = "";
 				return "success";
 			}
 		} catch (Exception e) {
@@ -70,48 +68,26 @@ public class LoginController extends BaseController implements Serializable{
 	}
 	
 	public String doLogOut () {
-		operadorActual = null;
-		clienteActual = null;
-		contrasenia = "";
-		usuario = "";
+		this.pass = "";
+		this.dni = "";
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "success";
 	}
-	
-	
-	/**
-	 * Getters and Setters
-	 */
-	
-	public Operador getOperadorActual() {
-		return operadorActual;
+
+	public String getDni() {
+		return dni;
 	}
 	
-	public void setOperadorActual(Operador operadorActual) {
-		this.operadorActual = operadorActual;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	
-	public Cliente getClienteActual() {
-		return clienteActual;
+	public String getPass() {
+		return pass;
 	}
 	
-	public void setClienteActual(Cliente clienteActual) {
-		this.clienteActual = clienteActual;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
-	
-	public String getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-	
-	public String getContrasenia() {
-		return contrasenia;
-	}
-	
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
+
 }
